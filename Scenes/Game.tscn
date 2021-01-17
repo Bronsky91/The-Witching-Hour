@@ -1,3 +1,31 @@
-[gd_scene format=2]
+[gd_scene load_steps=5 format=2]
 
-[node name="Game" type="Node"]
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://Assets/sword.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=3]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 7.35208
+height = 17.2045
+
+[node name="DemoLevel" type="Node"]
+
+[node name="Player" type="KinematicBody2D" parent="."]
+position = Vector2( 213.966, 95.0933 )
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="Player"]
+scale = Vector2( 0.25, 0.5 )
+texture = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2( -0.0625305, 0.187286 )
+shape = SubResource( 1 )
+
+[node name="RayCast2D" type="RayCast2D" parent="Player"]
+cast_to = Vector2( 0, 25 )
+
+[node name="Sword" type="Sprite" parent="Player"]
+position = Vector2( 3.05402, 20.3879 )
+rotation = 1.5708
+texture = ExtResource( 2 )
